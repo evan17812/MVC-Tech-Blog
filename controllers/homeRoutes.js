@@ -4,7 +4,7 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-
+    // Fetch all blogposts from the database, including associated user data
     const blogpostData = await Blogpost.findAll({
       include: [{ model: User }],
     });
