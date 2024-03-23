@@ -1,0 +1,39 @@
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Blog</title>
+    <link rel="stylesheet" type="text/css" href="/css/jass.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <!-- HTML Template: Main layout for the Tech Blogpost -->
+  </head>
+
+  <body>
+    <header>
+      <h1>Welcome to the Tech Blogpost</h1>
+    </header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/dashboard">Dashboard</a>
+      <!-- Conditional rendering based on user authentication -->
+      {{#if logged_in}}
+
+        <button id="logout" class="btn-no-style">Logout</button>
+      {{else}}
+
+        <a href="/login">Login</a>
+      {{/if}}
+    </nav>
+    <main>
+
+      {{{body}}}
+
+    </main>
+    <!-- Additional script for logout functionality, only loaded if user is logged in -->
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
+
+</html>

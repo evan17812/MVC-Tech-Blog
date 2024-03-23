@@ -1,0 +1,24 @@
+<!-- HTML Template: Displaying a list of blogposts -->
+<section class="container">
+
+  {{#if logged_in}}
+    <div class="col-12">
+      {{#each blogposts as |blogpost|}}
+        <div>
+          <h3><a href="/blogpost/{{blogpost.id}}">
+              {{blogpost.title}}
+              By
+              {{blogpost.user.username}}
+              Date:
+              {{format_date blogpost.createdAt}}</a>
+          </h3>
+        </div>
+      {{/each}}
+    </div>
+    <!-- Link to add a new blogpost -->
+    <h4><a href="/addblogpost" class="btn"> add blogpost</a></h4>
+  {{else}}
+    <!-- If user is not logged in, display login message -->
+    <a href="/login">You must login first to view this page</a>
+  {{/if}}
+</section>

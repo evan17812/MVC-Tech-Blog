@@ -1,0 +1,36 @@
+<!-- HTML Template: Display individual blogpost and associated comments -->
+<section class="container">
+
+  
+  <section class="flex-row justify-center">
+    <!-- Start of blogpost form -->
+    <form class="form post-form">
+      <!-- Hidden input to store blogpost id -->
+    <div>
+       <input type="hidden" id="blogpost_id" value="{{blogposts.id}}">
+       <!-- Blogpost title with conditional actions for logged-in users -->
+      <h2>
+        {{blogposts.title}}
+        {{#if logged_in }} 
+        <button class ="btn delete-btn">Delete</button>  <a href="/editblogpost/{{blogposts.id}}" class="btn">Update</a>
+        {{/if}}
+      </h2>
+      <h4>date: {{format_date blogposts.createdAt}}</h4>
+      <p>
+        {{blogposts.content}}
+      </p>
+    </div>
+    {{!-- {{/each}} --}}
+    <!-- Include comments template if blogpost has comments -->
+    {{#if blogposts.comments}}
+       {{> viewcomments comments=blogposts.comments}}
+    {{/if}}
+    </form>
+  </section>
+</section>
+<!-- Include addcomments partial template -->
+ {{> addcomments }}
+  <!-- Include blogpost.js script if blogpost has an id -->
+{{#if blogposts.id}}
+<script src="/js/blogpost.js"></script>
+{{/if}} 
